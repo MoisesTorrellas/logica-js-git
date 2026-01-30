@@ -10,7 +10,7 @@ Input: "Hola mundo" -> Output: false */
 
 const palindromo = ((str) => {
 
-    const limpio = str.replace(/\s/g, "").toLowerCase();
+    const limpio = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "").toLowerCase();
 
     const invertido = limpio.split('').reverse().join('');
 
@@ -21,3 +21,7 @@ const palindromo = ((str) => {
 
 console.log(palindromo('Anita lava la tina'));
 console.log(palindromo('hola mundo'));
+console.log(palindromo('Dábale arroz a la zorra el abad'));
+console.log(palindromo('Hola como estas tu'));
+
+
